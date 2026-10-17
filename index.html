@@ -203,7 +203,7 @@ footer{text-align:center;color:var(--m);font-size:13px;padding:40px 20px 70px;li
 <div class="bar" style="max-width:440px;margin:auto"><i id="goalBar"></i></div>
 <div class="row" style="margin-top:20px">
 <a class="btn s" id="wa" target="_blank" rel="noopener">📲 Partager sur WhatsApp</a>
-<button class="btn s" id="copy">🔗 Copier le lien</button>
+<button class="btn s" id="copy">🔗 Copier le message & le lien</button>
 </div>
 </div>
 
@@ -350,7 +350,7 @@ document.querySelectorAll("[data-n],[data-w]").forEach(e=>io.observe(e));
 
 $("cake").onclick=()=>{
   document.querySelectorAll(".fl").forEach(f=>f.style.display="none");
-  $("cakeTxtinnerHTML")="Bougies soufflées ! Que cette année soit légendaire, Germain ! 🎆";
+  $("cakeTxt").textContent="Bougies soufflées ! Que cette année soit légendaire, Germain ! 🎆";
   show();
 };
 
@@ -402,8 +402,22 @@ $("f").onsubmit=async e=>{
   burst(innerWidth/2,innerHeight*.6,80,"🎉");refresh();
 };
 
-$("copy").onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$("copy").textContent="✅ Lien copié !";beep(900,"sine",.1)}catch(e){prompt("Copie le lien :",location.href)}};
-$("wa").href="https://wa.me/?text="+encodeURIComponent("🎂 Viens souhaiter bon anniversaire à Germain Kasiama dans le QG de la Légende, et dis si tu aimes le cadeau de Mand ❤️ "+location.href);
+/* --- Bouton Copier avec message accrocheur --- */
+$("copy").onclick=async()=>{
+  try{
+    const shareText = "👑 *LE QG DE LA LÉGENDE EST OUVERT !* 🎂\n\nViens célébrer les prétendus 31 ans (nés en 1995) de notre grand frère *Germain Kasiama* ! 🥂\n\nEntre dans l'univers exclusif des 4 frères de Ngaliema (BTP & IA), découvre nos délires, laisse ton mot d'anniversaire et dis si tu kiffes le cadeau de Mand ❤️\n\n👉 Clique ici pour entrer : " + location.href;
+    await navigator.clipboard.writeText(shareText);
+    $("copy").textContent="✅ Message & lien copiés !";
+    beep(900,"sine",.1);
+    setTimeout(()=>{$("copy").textContent="🔗 Copier le message & le lien"}, 3000);
+  }catch(e){
+    prompt("Copie le lien :", location.href);
+  }
+};
+
+/* --- Message accrocheur pour WhatsApp --- */
+const waText = "👑 *LE QG DE LA LÉGENDE EST OUVERT !* 🎂\n\nViens célébrer les prétendus 31 ans (nés en 1995) de notre grand frère *Germain Kasiama* ! 🥂\n\nEntre dans l'univers exclusif des 4 frères de Ngaliema (BTP & IA), découvre nos délires, laisse ton mot d'anniversaire et dis si tu kiffes le cadeau de Mand ❤️\n\n👉 Viens participer ici : " + location.href;
+$("wa").href = "https://wa.me/?text=" + encodeURIComponent(waText);
 
 async function enter(n){
   name=n;L.setItem("gk_name",n);$("fn").value=n;$("gate").style.display="none";show();
