@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Germain Kasiama — Le QG de la Légende</title>
+<meta property="og:title" content="🎂 Joyeux anniversaire Germain Kasiama — Le QG de la Légende">
+<meta property="og:description" content="Entre dans le QG, laisse ton message et dis si tu aimes le cadeau de Mand ❤️">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Fira+Code:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--g:#f59e0b;--b:#3b82f6;--p:#8b5cf6;--c:#06b6d4;--bg:#0b0f17;--t:#f3f4f6;--m:#94a3b8}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:40px 40px}
+canvas#fx{position:fixed;inset:0;pointer-events:none;z-index:90;width:100%;height:100%}
+.glass{background:rgba(17,24,39,.72);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.09);border-radius:20px}
+.gold{border-color:rgba(245,158,11,.4);box-shadow:0 8px 30px rgba(245,158,11,.14)}
+nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 16px;background:rgba(11,15,23,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08);flex-wrap:wrap}
+nav b{background:linear-gradient(90deg,var(--g),#fff,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.08em}
+.pill{font:500 12px 'Fira Code',monospace;padding:6px 12px;border-radius:99px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);white-space:nowrap}
+section{max-width:1080px;margin:auto;padding:56px 16px}
+.k{font:500 12px 'Fira Code',monospace;color:var(--g);letter-spacing:.2em;text-transform:uppercase;text-align:center}
+h2{font-size:clamp(26px,5vw,38px);font-weight:900;text-align:center;margin:6px 0 28px}
+h1{font-size:clamp(40px,10vw,92px);font-weight:900;line-height:1;text-align:center}
+.grad{background:linear-gradient(90deg,var(--g),#fbbf24,var(--b));-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 18px rgba(245,158,11,.45))}
+.hero{min-height:88vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:22px;text-align:center}
+.badge{padding:9px 18px;color:var(--g);font-weight:800;font-size:13px;letter-spacing:.12em;text-transform:uppercase;animation:fl 4s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-10px)}}
+.sub{color:var(--m);max-width:640px;font-size:18px;line-height:1.6}
+.sub b{color:#fff}
+.cd{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;width:100%;max-width:640px}
+.cd div{padding:14px 4px}
+.cd strong{display:block;font:800 28px 'Fira Code',monospace;color:var(--g)}
+.cd small{font-size:10px;text-transform:uppercase;color:var(--m);letter-spacing:.1em}
+.btn{cursor:pointer;border:0;border-radius:14px;padding:13px 22px;font:800 14px Inter;color:#000;background:linear-gradient(90deg,var(--g),#d97706);transition:.2s;text-decoration:none;display:inline-block}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.btn.s{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.15)}
+.row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr))}
+.card{padding:22px;transition:.3s}
+.card:hover{transform:translateY(-8px);border-color:rgba(245,158,11,.5)}
+.av{width:min(300px,70vw);height:min(300px,70vw);border-radius:50%;display:grid;place-items:center;font-size:140px;background:linear-gradient(135deg,var(--g),var(--p));margin:0 auto 14px;position:relative;overflow:hidden;border:4px solid var(--g);box-shadow:0 0 28px rgba(245,158,11,.4)}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vip .av{width:300px;height:300px;font-size:90px;animation:fl 4s ease-in-out infinite}
+.card:has(.av){text-align:center}
+.card h3{font-size:19px}
+.card .r{font:500 11px 'Fira Code',monospace;color:var(--c);margin:3px 0 10px}
+.card p{color:var(--m);font-size:14px;line-height:1.55}
+.vip{border-color:rgba(245,158,11,.6);box-shadow:0 0 34px rgba(245,158,11,.22)}
+.q{padding:26px;text-align:center;font-size:19px;font-style:italic;color:#d1d5db;min-height:130px;display:flex;flex-direction:column;justify-content:center;gap:10px;max-width:760px;margin:auto}
+.q small{font:500 12px 'Fira Code',monospace;color:var(--g);font-style:normal}
+details{padding:18px 20px;cursor:pointer}
+summary{font-weight:800;list-style:none}
+summary span{color:var(--g);font:500 11px 'Fira Code',monospace;display:block}
+details p{color:var(--m);margin-top:10px;font-size:14px;line-height:1.6}
+.msg{border-left:4px solid var(--g)}
+.msg i{color:#d1d5db;font-size:14px;line-height:1.6;display:block;margin:8px 0}
+.stat{padding:22px;text-align:center}
+.stat strong{font:800 36px 'Fira Code',monospace;color:var(--c)}
+.stat small{display:block;color:var(--m);font-size:12px;margin:4px 0 12px}
+.bar{height:7px;border-radius:9px;background:rgba(255,255,255,.08);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g),var(--p));transition:width 2s}
+.cake{text-align:center;padding:36px 16px}
+#cake{font-size:96px;cursor:pointer;display:inline-block;position:relative;transition:.3s}
+#cake:hover{transform:scale(1.08)}
+.fl{position:absolute;top:-30px;font-size:30px;animation:fk .35s infinite alternate}
+@keyframes fk{to{transform:scale(1.2) rotate(6deg);opacity:.8}}
+.heart{font-size:84px;background:none;border:0;cursor:pointer;transition:.2s;filter:grayscale(1) opacity(.5)}
+.heart.on{filter:none;animation:bt .5s}
+@keyframes bt{40%{transform:scale(1.4)}}
+.big{font:800 52px 'Fira Code',monospace;color:#f43f5e}
+form{display:grid;gap:12px}
+input,textarea{width:100%;padding:13px 15px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#fff;font:15px Inter;outline:0}
+input:focus,textarea:focus{border-color:var(--g)}
+.stars span{font-size:30px;cursor:pointer;color:#475569;transition:.15s}
+.stars span.on{color:var(--g)}
+.cm{padding:16px 18px;margin-top:12px;animation:in .5s}
+@keyframes in{from{opacity:0;transform:translateY(12px)}}
+.cm b{color:var(--g)}
+.cm small{color:var(--m);font-size:11px;margin-left:8px}
+.cm p{margin-top:6px;color:#d1d5db;font-size:14px;line-height:1.5;word-break:break-word}
+.chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+.chips span{padding:5px 12px;border-radius:99px;background:rgba(139,92,246,.18);border:1px solid rgba(139,92,246,.4);font-size:13px}
+#gate{position:fixed;inset:0;z-index:100;background:rgba(5,8,14,.94);display:grid;place-items:center;padding:20px}
+#gate .glass{max-width:440px;width:100%;padding:34px;text-align:center;display:grid;gap:14px}
+#gate h2{margin:0}
+footer{text-align:center;color:var(--m);font-size:13px;padding:36px 16px 60px}
+.demo{font-size:11px;color:#f87171;text-align:center;margin-top:10px}
+.dt{text-align:center;padding:26px 18px}
+.dt .d{font:800 34px 'Fira Code',monospace;color:var(--g)}
+.dt .n{font-weight:800;font-size:18px;margin:6px 0 2px}
+.dt .w{font:500 12px 'Fira Code',monospace;color:var(--c);margin-top:12px}
+.dt p{color:var(--m);font-size:13px;line-height:1.5;margin-top:6px}
+.dt.today{border-color:rgba(245,158,11,.7);box-shadow:0 0 34px rgba(245,158,11,.3)}
+@media(max-width:560px){.cd strong{font-size:20px}.hide{display:none}}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+
+<div id="gate"><div class="glass gold">
+<div style="font-size:60px">👑</div>
+<h2 class="grad">Bienvenue au QG</h2>
+<p class="sub" style="font-size:15px">Ici on célèbre <b>Germain Kasiama</b>. Dis-nous ton prénom pour entrer dans la légende.</p>
+<input id="gname" maxlength="30" placeholder="Ton nom ou prénom">
+<button class="btn" id="genter">ENTRER DANS LE QG 🎉</button>
+</div></div>
+
+<nav>
+<b>GERMAIN KASIAMA · 31 ANS LÉGENDE</b>
+<div class="row" style="gap:6px">
+<span class="pill">👁 <span id="nVis">0</span> visites</span>
+<span class="pill">❤️ <span id="nLikeTop">0</span></span>
+<span class="pill hide">💬 <span id="nCmTop">0</span></span>
+</div>
+</nav>
+
+<section class="hero">
+<div class="glass gold badge">👑 Certifié Légende de Ngaliema & INBTP</div>
+<h1><span style="color:#e5e7eb">JOYEUX ANNIVERSAIRE</span><br><span class="grad">GERMAIN KASIAMA</span></h1>
+<p class="sub" id="ageTxt"></p>
+<div class="cd glass gold">
+<div><strong id="cy">31</strong><small>Ans</small></div>
+<div><strong id="cd">0</strong><small>Jours</small></div>
+<div><strong id="ch">0</strong><small>Heures</small></div>
+<div><strong id="cm">0</strong><small>Min</small></div>
+<div><strong id="cs">0</strong><small>Sec</small></div>
+</div>
+<div class="row">
+<button class="btn" id="ageBtn">Basculer : âge officiel / âge légende</button>
+<button class="btn s" id="party">🎉 Célébrer !</button>
+<a class="btn s" href="#livre">❤️ Aimer le cadeau</a>
+</div>
+</section>
+
+<section>
+<div class="k">Sagesse de la coloc</div><h2>Proverbes du BTP & de l’IA</h2>
+<div class="glass q" id="quote"></div>
+</section>
+
+<section>
+<div class="k">Quatre frères, une même destinée</div><h2>Le Hall of Fame de Ngaliema</h2>
+<div class="grid">
+<div class="glass card vip"><div class="av">👑<img src="photos/germain.jpg" alt="Germain" onerror="nx(this)"></div><h3>Germain Kasiama</h3><div class="r">LE VIP DU JOUR · L3 BTP INBTP</div><p>Doyen & sage. Officiel : 24 ans · Déclaré : 31 ans (né en 1995). Calme olympien, maître incontesté des débats de salon et détenteur de la télécommande.</p></div>
+<div class="glass card"><div class="av">💻<img src="photos/mand.png" alt="Dimitri" onerror="nx(this)"></div><h3>Dimitri Malula</h3><div class="r">DEV IA · ISIPA · PYTHON, DJANGO</div><p>Créateur de cette page. Il transforme le café en lignes de code et les lignes de code en cadeau mémorable pour le grand frère.</p></div>
+<div class="glass card"><div class="av">🏗️<img src="photos/endurance.jpg" alt="Endurance" onerror="nx(this)"></div><h3>Endurance Malula</h3><div class="r">STRUCTURES & BÉTON · INBTP</div><p>Pilier et grand frère, élégant et posé. Négociateur de fin de mois et logisticien hors pair pour ravitailler le QG.</p></div>
+<div class="glass card"><div class="av">🧱<img src="photos/josue.jpg" alt="Josue" onerror="nx(this)"></div><h3>Josué Kipulu</h3><div class="r">GÉNIE CIVIL · INBTP</div><p>Stratège de la coloc, maître des calculs de résistance. Toujours prêt au vibe pour Jesus. Si la dalle tient, c’est grâce à son regard critique.</p></div>
+</div>
+</section>
+
+<section>
+<div class="k">À vos agendas</div><h2>Les dates à retenir, ne les oubliez pas !</h2>
+<div class="grid">
+<div class="glass card dt" data-m="10" data-d="17"><div style="font-size:42px">🎂</div><div class="d">17 octobre</div><div class="n">Germain Kasiama</div><p>Le grand frère, la légende. Aujourd’hui on le célèbre !</p><div class="w"></div></div>
+<div class="glass card dt" data-m="10" data-d="26"><div style="font-size:42px">🎉</div><div class="d">26 octobre</div><div class="n">Dimitri Malula</div><p>Le 26 octobre, jour de la Saint-Dimitri : tous les Dimitri fêtent leur jour, même Google le reconnaît. Préparez les cadeaux !</p><div class="w"></div></div>
+<div class="glass card dt" data-m="11" data-d="3"><div style="font-size:42px">🏆</div><div class="d">3 novembre</div><div class="n">Endurance Malula</div><p>Le pilier du béton et du QG. Soyez prêts, la fête continue !</p><div class="w"></div></div>
+</div>
+</section>
+
+<section>
+<div class="k">Messages scellés</div><h2>Les mots des frères</h2>
+<div class="grid">
+<div class="glass card msg"><h3>Dimitri</h3><div class="r">« Pour mon grand frère »</div><i>« Même si tu répètes que tu es né en 1995 et que tu as 31 ans, tu restes pour moi un modèle de calme et de grandeur. Merci pour l’ambiance, les fous rires et le soutien. Que cet anniversaire t’ouvre toutes les portes du succès ! »</i></div>
+<div class="glass card msg"><h3>Endurance</h3><div class="r">« Solide comme du béton »</div><i>« Joyeux anniversaire mon frère ! La vie d’étudiant à l’INBTP n’est pas toujours facile, mais t’avoir à mes côtés rend le parcours incroyable. On forme une équipe solide à Ngaliema, rien ne peut nous ébranler. »</i></div>
+<div class="glass card msg"><h3>Josué</h3><div class="r">« La force du groupe »</div><i>« Germain, digne représentant de la sagesse du foyer ! Merci pour chaque moment de rigolade et chaque débat passionné après les cours. Tu es une vraie légende. Que Dieu bénisse tes projets dans le BTP ! »</i></div>
+</div>
+</section>
+
+<section>
+<div class="k">Le chantier des souvenirs</div><h2>Ouvre les archives</h2>
+<div class="grid">
+<details class="glass"><summary><span>DÉLIRE #01</span>La nuit du chantier blanche</summary><p>Germain a voulu dessiner les plans d’un gratte-ciel à 3 h du matin sur la table du salon, avec l’aide des frères.</p></details>
+<details class="glass"><summary><span>DÉLIRE #02</span>Le bug en INBTP</summary><p>Le travail de fin d’année, fait pendant deux semaines par Germain et Josué, a été déchiré par le professeur le jour de la remise. Fou rire général dans la classe… et le professeur a fini par donner 20/20.</p></details>
+<details class="glass"><summary><span>DÉLIRE #03</span>Le pacte des 4 frères</summary><p>Se soutenir contre vents et marées, dans les projets BTP les plus fous comme dans les réussites tech à venir.</p></details>
+<details class="glass"><summary><span>DÉLIRE #04</span>Fufu & soso des nuits de révisions</summary><p>L’INBTP et l’ISIPA se croisent à 2 h du matin autour de la table pour reprendre des forces avant les examens.</p></details>
+<details class="glass"><summary><span>DÉLIRE #05</span>Le débat des 31 ans</summary><p>Science exacte où Germain prouve qu’il a vécu 31 ans d’expériences en 24 ans de vie calendaire.</p></details>
+</div>
+</section>
+
+<section>
+<div class="k">Dashboard officiel</div><h2>Indicateurs de la légende</h2>
+<div class="grid">
+<div class="glass stat"><strong data-n="4580">0</strong> m³<small>Béton brassé avec brio</small><div class="bar"><i data-w="90"></i></div></div>
+<div class="glass stat"><strong data-n="89420">0</strong><small>Lignes de code crachées pour la survie du QG</small><div class="bar"><i data-w="75"></i></div></div>
+<div class="glass stat"><strong data-n="99.9" data-d="1">0</strong> %<small>Indice de sagesse</small><div class="bar"><i data-w="99.9"></i></div></div>
+<div class="glass stat"><strong>24/7</strong><small>Présence pour rigoler et débattre</small><div class="bar"><i data-w="100"></i></div></div>
+</div>
+</section>
+
+<section class="cake">
+<div class="k">Moment suprême</div><h2>Souffle les bougies, Germain !</h2>
+<div id="cake">🎂<span class="fl" style="left:8px">🔥</span><span class="fl" style="left:38px;animation-delay:.1s">🔥</span><span class="fl" style="left:68px;animation-delay:.2s">🔥</span></div>
+<p class="sub" id="cakeTxt" style="margin:14px auto 0">Clique sur le gâteau pour éteindre les bougies et lancer le feu d’artifice.</p>
+</section>
+
+<section id="livre">
+<div class="k">Le cadeau de Mand à Germain</div><h2>Livre d’or & j’aime</h2>
+<div class="glass gold" style="padding:30px;text-align:center">
+<button class="heart" id="heart" aria-label="J’aime">❤️</button>
+<div class="big" id="nLike">0</div>
+<p class="sub" style="margin:8px auto 14px">personnes aiment ce cadeau. Objectif : <b id="goalN">100</b> ❤️</p>
+<div class="bar" style="max-width:420px;margin:auto"><i id="goalBar"></i></div>
+<div class="row" style="margin-top:18px">
+<a class="btn s" id="wa" target="_blank" rel="noopener">📲 Partager sur WhatsApp</a>
+<button class="btn s" id="copy">🔗 Copier le lien</button>
+</div>
+</div>
+
+<div class="grid" style="margin-top:22px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))">
+<div class="glass stat"><strong id="sVis">0</strong><small>visites au total</small></div>
+<div class="glass stat"><strong id="sUni">0</strong><small>visiteurs uniques</small></div>
+<div class="glass stat"><strong id="sCm">0</strong><small>avis & messages</small></div>
+<div class="glass stat"><strong id="sAvg">–</strong><small>note moyenne ⭐</small></div>
+</div>
+
+<div class="glass" style="padding:26px;margin-top:22px;max-width:680px;margin-left:auto;margin-right:auto">
+<h3 style="margin-bottom:14px">Laisse ton avis et un mot pour Germain</h3>
+<form id="f">
+<input id="fn" maxlength="30" placeholder="Ton nom" required>
+<div class="stars" id="stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+<textarea id="ft" rows="3" maxlength="400" placeholder="Ton message pour Germain, ton avis sur le cadeau…" required></textarea>
+<button class="btn">Envoyer mon message 🚀</button>
+</form>
+<div id="list"></div>
+</div>
+
+<div style="text-align:center;margin-top:30px">
+<div class="k">Ils sont déjà passés au QG</div>
+<div class="chips" id="chips"></div>
+</div>
+<div class="demo" id="demo"></div>
+</section>
+
+<footer>GERMAIN KASIAMA · LE QG DE LA LÉGENDE<br>Conçu avec passion par Dimitri Malula & les 4 frères de Ngaliema · Kinshasa, 2026<br>Prochains rendez-vous : 26 octobre (Dimitri) · 3 novembre (Endurance)</footer>
+
+<script>
+/* ====== CONFIG : colle ici l’adresse de ta base Firebase pour que les compteurs soient partagés ======
+   Exemple : const FB="https://germain-qg-default-rtdb.firebaseio.com"; (sans / à la fin)
+   Laisse vide pour tester : tout est alors enregistré seulement sur ton appareil. */
+const FB="";
+const GOAL=100;
+
+/* Photos : essaie plusieurs extensions, sinon garde l'emoji */
+function nx(i){const e=[".png",".jpeg",".webp"],k=+(i.dataset.k||0);
+  if(k>=e.length){i.remove();return}
+  i.dataset.k=k+1;i.src=i.src.replace(/\.[a-z]+$/,e[k])}
+const $=id=>document.getElementById(id);
+const L=(()=>{try{localStorage.setItem("t","1");return localStorage}catch(e){const m={};return{getItem:k=>m[k]||null,setItem:(k,v)=>m[k]=v}}})();
+
+/* ---------- Données : Firebase si configuré, sinon stockage local ---------- */
+async function rd(p,q){
+  try{
+    if(FB){const r=await fetch(FB+"/"+p+".json"+(q||""));return(await r.json())||{}}
+    return JSON.parse(L.getItem("gk_"+p)||"{}");
+  }catch(e){return{}}
+}
+async function wr(p,v,m){
+  m=m||"PUT";
+  try{
+    if(FB){await fetch(FB+"/"+p+".json",{method:m,body:JSON.stringify(v)});return}
+    const [root,key]=p.split("/");
+    const o=JSON.parse(L.getItem("gk_"+root)||"{}");
+    if(m==="POST")o["k"+Date.now()+Math.random().toString(36).slice(2,6)]=v;
+    else if(v===null)delete o[key];
+    else o[key]=v;
+    L.setItem("gk_"+root,JSON.stringify(o));
+  }catch(e){}
+}
+
+/* ---------- Identité du visiteur ---------- */
+let vid=L.getItem("gk_vid");
+if(!vid){vid="v"+Date.now().toString(36)+Math.random().toString(36).slice(2,7);L.setItem("gk_vid",vid)}
+let name=L.getItem("gk_name")||"";
+
+/* ---------- Effets : confettis & feux d’artifice ---------- */
+const cv=$("fx"),cx=cv.getContext("2d");let P=[];
+function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();addEventListener("resize",rs);
+function burst(x,y,n,emoji){
+  const cols=["#f59e0b","#3b82f6","#8b5cf6","#06b6d4","#f43f5e","#22c55e","#fff"];
+  for(let i=0;i<n;i++){const a=Math.random()*6.283,s=2+Math.random()*7;
+    P.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-2,l:70+Math.random()*40,c:cols[i%7],e:emoji||null,r:3+Math.random()*3})}
+  if(P.length===n)loop();
+}
+function loop(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  P=P.filter(p=>p.l>0);
+  P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.12;p.vx*=.99;p.l--;cx.globalAlpha=Math.min(1,p.l/30);
+    if(p.e){cx.font="22px serif";cx.fillText(p.e,p.x,p.y)}else{cx.fillStyle=p.c;cx.beginPath();cx.arc(p.x,p.y,p.r,0,6.283);cx.fill()}});
+  cx.globalAlpha=1;
+  if(P.length)requestAnimationFrame(loop);else cx.clearRect(0,0,cv.width,cv.height);
+}
+function show(){for(let i=0;i<7;i++)setTimeout(()=>burst(innerWidth*(.15+Math.random()*.7),innerHeight*(.15+Math.random()*.4),70),i*260)}
+$("party").onclick=show;
+
+/* ---------- Âge, compteur en direct, citations ---------- */
+let legend=true;
+function ageTxt(){
+  $("ageTxt").innerHTML=legend
+   ?"Aujourd’hui, le <b>17 octobre</b>, la légende et le droit d’aînesse affirment fièrement <b style='color:#3b82f6'>31 ans (né en 1995)</b> ! 👑"
+   :"Aujourd’hui, le <b>17 octobre</b>, l’état civil atteste <b style='color:#f59e0b'>24 ans</b>… mais personne n’y croit. 😏";
+  $("cy").textContent=legend?31:24;
+}
+$("ageBtn").onclick=()=>{legend=!legend;ageTxt();burst(innerWidth/2,innerHeight/2,50)};
+ageTxt();
+function tick(){
+  const b=new Date(1995,9,17),n=new Date();
+  let y=n.getFullYear()-1995,last=new Date(1995+y,9,17);if(last>n){y--;last=new Date(1995+y,9,17)}
+  let ms=n-last;
+  $("cd").textContent=Math.floor(ms/864e5);
+  $("ch").textContent=Math.floor(ms/36e5)%24;
+  $("cm").textContent=Math.floor(ms/6e4)%60;
+  $("cs").textContent=Math.floor(ms/1e3)%60;
+  if(legend)$("cy").textContent=y;
+}
+setInterval(tick,1000);tick();
+const Q=[["Le béton armé de l’INBTP soutient les murs de Ngaliema, mais l’IA de l’ISIPA prédit déjà le règne éternel de Germain.","Proverbe de la coloc Ngaliema"],["Un grand frère qui prétend avoir 31 ans à 24 ans n’est pas un menteur : c’est un homme qui a 7 ans d’avance sur sa propre sagesse.","La Loi de la Fraternité"],["Peu importent les calculs de structures ou les algorithmes de Python : la paix au foyer reste notre plus beau chef-d’œuvre.","Dimitri & la Team"]];
+let qi=0;
+function quote(){const q=Q[qi++%3],e=$("quote");e.style.opacity=0;setTimeout(()=>{e.innerHTML="";const p=document.createElement("div");p.textContent="« "+q[0]+" »";const s=document.createElement("small");s.textContent="— "+q[1];e.append(p,s);e.style.opacity=1},300)}
+$("quote").style.transition="opacity .3s";quote();setInterval(quote,6000);
+
+function dates(){
+  const n=new Date(),t0=new Date(n.getFullYear(),n.getMonth(),n.getDate());
+  document.querySelectorAll(".dt").forEach(c=>{
+    const m=+c.dataset.m-1,d=+c.dataset.d;let x=new Date(n.getFullYear(),m,d);
+    if(x<t0)x=new Date(n.getFullYear()+1,m,d);
+    const j=Math.round((x-t0)/864e5),w=c.querySelector(".w");
+    if(j===0){w.textContent="🔥 C’est aujourd’hui !";c.classList.add("today")}
+    else w.textContent="⏳ Dans "+j+" jour"+(j>1?"s":"");
+  });
+}
+dates();
+/* ---------- Dashboard animé + gâteau ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);
+  const t=e.target;
+  if(t.dataset.n){const N=+t.dataset.n,d=+t.dataset.d||0,t0=performance.now();(function f(){const k=Math.min(1,(performance.now()-t0)/2000);t.textContent=(N*k).toFixed(d).replace(/\B(?=(\d{3})+(?!\d))/g,d?"":",");if(k<1)requestAnimationFrame(f)})()}
+  if(t.dataset.w)t.style.width=t.dataset.w+"%";
+}),{threshold:.4});
+document.querySelectorAll("[data-n],[data-w]").forEach(e=>io.observe(e));
+$("cake").onclick=()=>{
+  document.querySelectorAll(".fl").forEach(f=>f.style.display="none");
+  $("cakeTxt").textContent="Bougies soufflées ! Que cette année soit encore plus légendaire, Germain ! 🎆";
+  show();
+};
+
+/* ---------- Statistiques, j’aime, avis, visiteurs ---------- */
+let liked=false,stars=0;
+const ago=t=>{const s=(Date.now()-t)/1e3;return s<60?"à l’instant":s<3600?"il y a "+Math.floor(s/60)+" min":s<86400?"il y a "+Math.floor(s/3600)+" h":"il y a "+Math.floor(s/86400)+" j"};
+function setN(ids,v){ids.forEach(i=>$(i).textContent=v)}
+async function refresh(){
+  const [vis,lk,vs,cm]=await Promise.all([
+    rd("visits","?shallow=true"),rd("likes"),rd("visitors","?orderBy=%22%24key%22&limitToLast=60"),rd("comments","?orderBy=%22%24key%22&limitToLast=50")]);
+  const nv=Object.keys(vis).length,nl=Object.keys(lk).length,cl=Object.entries(cm).sort((a,b)=>b[1].t-a[1].t);
+  liked=!!lk[vid];$("heart").classList.toggle("on",liked);
+  setN(["nVis","sVis"],nv);setN(["nLike","nLikeTop"],nl);setN(["nCmTop","sCm"],cl.length);
+  $("sUni").textContent=Object.keys(vs).length;
+  const rated=cl.filter(c=>c[1].s>0);
+  $("sAvg").textContent=rated.length?(rated.reduce((a,c)=>a+c[1].s,0)/rated.length).toFixed(1):"–";
+  const g=nl<GOAL?GOAL:Math.ceil((nl+1)/50)*50;$("goalN").textContent=g;$("goalBar").style.width=Math.min(100,nl/g*100)+"%";
+  const ch=$("chips");ch.innerHTML="";
+  Object.values(vs).sort((a,b)=>b.t-a.t).forEach(v=>{const s=document.createElement("span");s.textContent="👤 "+v.n;ch.append(s)});
+  const ls=$("list");ls.innerHTML="";
+  cl.forEach(([k,c])=>{
+    const d=document.createElement("div");d.className="glass cm";
+    const b=document.createElement("b");b.textContent=c.n;
+    const st=document.createElement("span");st.style.color="#f59e0b";st.textContent=c.s?"  "+"★".repeat(c.s):"";
+    const sm=document.createElement("small");sm.textContent=ago(c.t);
+    const p=document.createElement("p");p.textContent=c.m;
+    d.append(b,st,sm,p);ls.append(d);
+  });
+}
+$("heart").onclick=async e=>{
+  if(!name){$("gate").style.display="grid";return}
+  liked=!liked;$("heart").classList.toggle("on",liked);
+  if(liked){const r=e.target.getBoundingClientRect();burst(r.left+r.width/2,r.top,40,"❤️");burst(r.left+r.width/2,r.top,30)}
+  await wr("likes/"+vid,liked?{n:name,t:Date.now()}:null);
+  refresh();
+};
+document.querySelectorAll("#stars span").forEach((s,i)=>{
+  s.onclick=()=>{stars=i+1;document.querySelectorAll("#stars span").forEach((x,j)=>x.classList.toggle("on",j<stars))};
+});
+$("f").onsubmit=async e=>{
+  e.preventDefault();
+  const n=$("fn").value.trim(),m=$("ft").value.trim();if(!n||!m)return;
+  name=n;L.setItem("gk_name",n);
+  await wr("comments",{n,m,s:stars,t:Date.now()},"POST");
+  $("ft").value="";stars=0;document.querySelectorAll("#stars span").forEach(x=>x.classList.remove("on"));
+  burst(innerWidth/2,innerHeight*.6,80,"🎉");refresh();
+};
+$("copy").onclick=async()=>{try{await navigator.clipboard.writeText(location.href);$("copy").textContent="✅ Lien copié !"}catch(e){prompt("Copie le lien :",location.href)}};
+$("wa").href="https://wa.me/?text="+encodeURIComponent("🎂 Viens souhaiter bon anniversaire à Germain Kasiama dans le QG de la Légende, et dis si tu aimes le cadeau de Mand ❤️ "+location.href);
+
+/* ---------- Porte d’entrée ---------- */
+async function enter(n){
+  name=n;L.setItem("gk_name",n);$("fn").value=n;$("gate").style.display="none";show();
+  await wr("visitors/"+vid,{n,t:Date.now()});
+  if(!sessionStorage.getItem("gk_s")){try{sessionStorage.setItem("gk_s","1")}catch(e){}await wr("visits",Date.now(),"POST")}
+  refresh();
+}
+$("genter").onclick=()=>{const n=$("gname").value.trim();if(n)enter(n);else $("gname").focus()};
+$("gname").onkeydown=e=>{if(e.key==="Enter")$("genter").click()};
+if(name){$("gname").value=name;$("gate").style.display="none";$("fn").value=name;
+  (async()=>{await wr("visitors/"+vid,{n:name,t:Date.now()});
+    if(!sessionStorage.getItem("gk_s")){try{sessionStorage.setItem("gk_s","1")}catch(e){}await wr("visits",Date.now(),"POST")}
+    refresh()})()}
+else refresh();
+if(!FB)$("demo").textContent="Mode test : les compteurs sont enregistrés seulement sur cet appareil. Configure Firebase (voir le guide) pour les partager avec tout le monde.";
+setInterval(refresh,15000);
+</script>
+</body>
+</html>
